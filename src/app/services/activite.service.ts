@@ -12,10 +12,9 @@ export class ActiviteService {
 
   constructor(private http: HttpClient) {}
 
-  getAllActivities(): Observable<Activite[]> {
+  getAllActivites(): Observable<Activite[]> {
     return this.http.get<Activite[]>(this.apiUrl);
   }
-
   getActiviteById(id: number): Observable<Activite> {
     return this.http.get<Activite>(`${this.apiUrl}/${id}`);
   }
