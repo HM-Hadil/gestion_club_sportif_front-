@@ -1,0 +1,29 @@
+<div class="auth-container">
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+
+    <h2>Inscription</h2>
+    <div class="form-group">
+      <input type="text" formControlName="firstname" placeholder="Prénom">
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="lastname" placeholder="Nom">
+    </div>
+    <div class="form-group">
+      <input type="email" formControlName="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <input type="tel" formControlName="phone" placeholder="Téléphone">
+    </div>
+    <div class="form-group">
+      <input type="password" formControlName="password" placeholder="Mot de passe">
+    </div>
+ <div class="form-group">
+  <select formControlName="role">
+    <option value="Joueur">Joueur</option>
+    <option value="Entreneur">Entraineur</option>
+  </select>
+</div>
+    <button type="submit" >S'inscrire</button>
+  </form>
+</div>

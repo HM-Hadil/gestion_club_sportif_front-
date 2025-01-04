@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="nav-brand">SportClub</div>
+  <div class="nav-links">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/activities" routerLinkActive="active">Activités</a>
+    <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+      <a routerLink="/login" routerLinkActive="active">Connexion</a>
+      <a routerLink="/register" routerLinkActive="active">Inscription</a>
+    </ng-container>
+    <ng-template #loggedIn>
+      <a (click)="logout()" class="logout-btn">Déconnexion</a>
+    </ng-template>
+  </div>
+</nav>
+
+
