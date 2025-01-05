@@ -1,0 +1,64 @@
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile p {
+  color: #6c757d;
+}
+
+.nav-item {
+  margin: 10px 0;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.card {
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #666;
+}

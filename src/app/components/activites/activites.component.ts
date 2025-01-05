@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { Activite } from '../../models/Activite';
 import { ActiviteService } from '../../services/activite.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AsyncPipe, DatePipe, NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-activites',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive, NgClass, NgIf, AsyncPipe, DatePipe],
   templateUrl: './activites.component.html',
   styleUrl: './activites.component.css'
 })

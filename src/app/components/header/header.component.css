@@ -1,0 +1,41 @@
+/* header.component.css */
+/* Si vous préférez ne pas utiliser Tailwind, voici le CSS équivalent : */
+
+header {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.space-x-6 a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.space-x-6 a:hover {
+  color: #bfdbfe;
+}
+
+.space-x-6 a:first-child {
+  margin-left: 0;
+}

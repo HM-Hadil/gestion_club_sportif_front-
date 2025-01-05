@@ -1,0 +1,39 @@
+<div class="container col">
+  <h2>Listes des comptes Partenaire</h2>
+  <div class="row">
+    @for (user of users; track $index) {
+    <div class="card one-card">
+    <div class="row">
+
+      <div class="col" style="margin: 1rem">
+        <h3> <i> <b> {{user.firstname}} {{user.lastname}}</b></i></h3>
+        <h6>{{user.email}}</h6>
+        <address>{{user.phone}}</address>
+      </div>
+
+      <div class="col">
+
+        <div class="row btn">
+          <button  style="margin-top: 1rem; background-color: red;"  (click)="delete(user.id)" >Refuser</button>
+          <button style="margin-top: 1rem;"  (click)="accepter(user.id)">
+            Accepter
+          </button>
+
+
+        </div>
+
+      </div>
+    </div>
+
+    </div>
+}
+
+@empty {
+  <p class="no-data-message">
+    Pas de compte trouvé
+  </p>
+  }
+  </div>
+
+
+</div>

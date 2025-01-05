@@ -1,0 +1,38 @@
+@if (inscriptions.length > 0;) {
+<div >
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom de la séance</th>
+        <th>Date d'inscription</th>
+        <th>Statut</th>
+        <th>Présence confirmée</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      @for (inscription of inscriptions; track $index) {
+      <tr>
+        <td>{{ inscription.seanceName }}</td>
+        <td>{{ inscription.dateInscription  }}</td>
+        <td>{{ inscription.statut }}</td>
+        <td>{{ inscription.presenceConfirmee ? 'Oui' : 'Non' }}</td>
+        <td>
+          @if (!inscription.presenceConfirmee) {
+          <button  (click)="reserver(inscription.id)" class="btn btn-primary">
+            Réserver
+          </button>}
+          @if (inscription.presenceConfirmee) {
+            <button  (click)="annuler(inscription.id)" class="btn btn-danger">
+              Annuler
+            </button>}
+        </td>
+      </tr>}
+    </tbody>
+  </table>
+</div>
+}
+<ng-template #noInscriptions>
+  <p>Aucune inscription trouvée.</p>
+</ng-template>

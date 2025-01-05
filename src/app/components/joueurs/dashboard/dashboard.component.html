@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar">
+      <div class="profile">
+        @if (userInfo) {
+          <h4>{{ userInfo.firstName }} {{ userInfo.lastName }}</h4>
+          <p>{{ userInfo.email }}</p>
+        } 
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="profil">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="mes-inscriptions">Mes inscriptions</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn btn-danger" (click)="logout()">Déconnexion</button>
+        </li>
+      </ul>
+    </div>
+ 
+    <div class="main-content">
+      <router-outlet></router-outlet>  <!-- Here the other components will be displayed -->
+    </div>
+
+     
+<!--
+    
+    <div class="col-md-9 main-content">
+      <h2 class="mb-4">Tableau de bord</h2>
+
+ 
+      @if (error) {
+        <div class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+      }
+
+    
+      @if (userInfo) {
+        <div class="card">
+          <div class="card-header">
+            Informations personnelles
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ userInfo.firstName }} {{ userInfo.lastName }}</h5>
+            <p class="card-text">
+              <strong>Email :</strong> {{ userInfo.email }}<br>
+              <strong>Rôle :</strong> {{ userInfo.role }}<br>
+            </p>
+          </div>
+        </div>
+      }
+
+      @if (!userInfo && !error) {
+        <div class="text-center">
+          <p>Chargement des informations...</p>
+        </div>
+      }
+    </div>
+  -->
+  </div>
+</div>

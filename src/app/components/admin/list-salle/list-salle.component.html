@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Liste des Salles</h2>
+
+  <!-- Table to display salles -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom de la Salle</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through salles and display each salle in a row -->
+       @for (salle of salles; track $index) {
+      <tr >
+        <td>{{ salle.id }}</td>
+        <td>{{ salle.nom }}</td>
+        <td>{{ salle.status }}</td>
+        <td>
+          <!-- Edit and Delete buttons (optional) -->
+          <button class="btn btn-danger" (click)="deleteSalle(salle.id)">Delete</button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

@@ -1,32 +1,11 @@
 <div class="min-h-screen flex flex-col">
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md">
-    <nav class="container mx-auto px-6 py-4">
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold tracking-wider">SportClub</div>
-        <div class="space-x-6">
-          <a routerLink="/home" class="hover:text-blue-200 transition-colors duration-300 ease-in-out">Accueil</a>
-          <a routerLink="/activites" class="hover:text-blue-200 transition-colors duration-300 ease-in-out">Activités</a>
-          <a routerLink="/about" class="hover:text-blue-200 transition-colors duration-300 ease-in-out">À propos</a>
-          
-          <!-- Connexion / Inscription -->
-          <ng-container>
-            <a routerLink="/login" class="hover:text-blue-200 transition-colors duration-300 ease-in-out">Connexion</a>
-            <a routerLink="/register" class="hover:text-blue-200 transition-colors duration-300 ease-in-out">Inscription</a>
-          </ng-container>
-          
-          <!-- Menu utilisateur -->
-          <ng-template #userMenu>
-            <button class="hover:text-blue-200 transition-colors duration-300 ease-in-out">Déconnexion</button>
-          </ng-template>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <app-header></app-header>
 
   <!-- Main Content -->
   <main class="container mx-auto px-6 py-8 flex-grow">
-    <app-activites></app-activites>
+  <router-outlet></router-outlet>
+  
   </main>
 
   <!-- Footer -->

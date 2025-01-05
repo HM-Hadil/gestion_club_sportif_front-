@@ -1,0 +1,21 @@
+<form [formGroup]="salleForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nom">Salle Name:</label>
+    <input type="text" id="nom" formControlName="nom" />
+    
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <select id="status" formControlName="status">
+      <option value="AVAILABLE">Available</option>
+      <option value="UNAVAILABLE">Unavailable</option>
+      <option value="UNDER_MAINTENANCE">Under Maintenance</option>
+    </select>
+    <div >
+      <small >Status is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="salleForm.invalid">Create Salle</button>
+</form>

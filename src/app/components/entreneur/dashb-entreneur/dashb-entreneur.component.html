@@ -1,0 +1,18 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <ul>
+      <li><a routerLink="add-activity" routerLinkActive="active">Ajouter Activité</a></li>
+      <li><a routerLink="activity-list" routerLinkActive="active">Liste des Activités</a></li>
+      <li><a routerLink="registration-list" routerLinkActive="active">Liste des Inscriptions</a></li>
+      <li class="nav-item">
+        <button class="nav-link btn btn-danger" (click)="logout()">Déconnexion</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main content area -->
+  <div class="main-content">
+    <router-outlet></router-outlet>  <!-- Here the other components will be displayed -->
+  </div>
+</div>

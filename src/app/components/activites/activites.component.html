@@ -1,41 +1,52 @@
-<!-- Liste des activités -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
   @for (activite of activites; track $index) {
-  <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-    <div class="p-6">
-      <h3 class="text-xl font-semibold mb-2 text-blue-600">{{activite.nom}}</h3>
-      <p class="text-gray-600 mb-4">
-        Entraineur: {{activite.entraineurFirstname}} {{activite.entraineurLastname}} 
-      </p>
-
-      <div class="space-y-4">
-        @for (seance of activite.seances; track $index) {
-        <div class="border-t pt-4">
-          <p class="font-medium text-gray-700">Séance {{seance.id}}</p>
-          <p class="text-gray-600">Date: {{seance.dateDebut}} - {{seance.dateFin}}</p>
-          <p class="text-gray-600">Prix: {{seance.prix}}€</p>
-          <p class="text-gray-600">Places disponibles: {{seance.nombreLimite}}</p>
-          <p class="text-gray-600">Salle: {{seance.salle.nom}}</p>
-
-          <!-- Status de la séance -->
-          <div class="mt-2">
-            <span class="px-3 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800">
-              {{seance.status}}
-            </span>
-          </div>
-
-          <!-- Bouton "S'inscrire" -->
-          <div class="mt-4">
-            <button 
-              (click)="inscrireASeance(seance.id)" 
-              class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-              S'inscrire
-            </button>
-          </div>
+    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:scale-105">
+      <!-- En-tête de l'activité -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
+        <h3 class="text-xl font-semibold text-white mb-2">{{ activite.nom }}</h3>
+        <div class="flex items-center space-x-2 text-blue-100 text-sm">
+          <p>{{ activite.entraineurFirstname }} {{ activite.entraineurLastname }}</p>
         </div>
-      }
+      </div>
+
+      <!-- Contenu des séances -->
+      <div class="p-4">
+        <div class="space-y-4">
+          @for (seance of activite.seances; track $index) {
+            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <!-- Info séance -->
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <h4 class="font-semibold text-gray-800 text-sm">Séance {{ seance.id }}</h4>
+                  <div class="space-y-1 mt-1 text-xs text-gray-600">
+                    <p>{{ seance.dateDebut | date:'short' }} - {{ seance.dateFin | date:'short' }}</p>
+                    <p>{{ seance.prix }}€</p>
+                    <p>{{ seance.salle.nom }}</p>
+                    <p>{{ seance.nombreLimite }} places</p>
+                  </div>
+                </div>
+
+                <!-- Status badge -->
+                <span [ngClass]="{
+                  'bg-green-100 text-green-800': seance.status === 'DISPONIBLE',
+                  'bg-yellow-100 text-yellow-800': seance.status === 'PRESQUE_COMPLET',
+                  'bg-red-100 text-red-800': seance.status === 'COMPLET'
+                }" class="px-2 py-1 rounded-full text-xs font-medium">
+                  {{ seance.status }}
+                </span>
+              </div>
+
+              <!-- Bouton inscription -->
+              <button (click)="inscrireASeance(seance.id)"
+                      class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-2 rounded-lg font-medium
+                             transition-all duration-300 hover:from-blue-600 hover:to-indigo-600
+                             focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                S'inscrire
+              </button>
+            </div>
+          }
+        </div>
       </div>
     </div>
-  </div>
-  }  
+  }
 </div>
