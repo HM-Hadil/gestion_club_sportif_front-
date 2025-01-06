@@ -12,11 +12,13 @@ import { DashbEntreneurComponent } from './components/entreneur/dashb-entreneur/
 import { ActivityListComponent } from './components/entreneur/activity-list/activity-list.component';
 import { AddActivityComponent } from './components/entreneur/add-activity/add-activity.component';
 import { ReservationListComponent } from './components/entreneur/reservation-list/reservation-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
    { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'activites', component: ActivitesComponent },
+  { path: '', component: HomeComponent },
 
   {
     path: 'dashboardJoueur',

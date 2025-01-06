@@ -52,6 +52,11 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                     
                   </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{user.phone}}</div>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                    
+                  </td>
                
                   <td class="px-6 py-4 whitespace-nowrap text-center">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
@@ -73,36 +78,13 @@
       </div>
     </div>
 
-    <!-- Summary cards -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-lg font-medium text-gray-900">Total Inscriptions</h3>
-        <p class="mt-2 text-3xl font-bold text-blue-600">{{nombreInscrits}}</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-lg font-medium text-gray-900">Confirmées</h3>
-        <p class="mt-2 text-3xl font-bold text-green-600">{{nombreConfirmes}}</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-lg font-medium text-gray-900">En Attente</h3>
-        <p class="mt-2 text-3xl font-bold text-yellow-600">{{nombreEnAttente}}</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-lg font-medium text-gray-900">Annulées</h3>
-        <p class="mt-2 text-3xl font-bold text-red-600">{{nombreAnnules}}</p>
-      </div>
-    </div>
+   
   }
 
   <!-- Empty state -->
   @if (!loading && !error && inscriptions.length === 0) {
     <div class="text-center py-12 bg-white rounded-lg shadow">
-      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-      </svg>
+ 
       <h3 class="mt-2 text-sm font-medium text-gray-900">Aucune inscription</h3>
       <p class="mt-1 text-sm text-gray-500">Il n'y a pas encore d'inscriptions pour cette séance.</p>
     </div>

@@ -8,8 +8,8 @@ export interface Activite {
     nom: string;
     entraineurId:string;
     seances: Seance[];
-     entraineurFirstname:string;  // Prénom de l'entraîneur
+     entraineurFirstname:string;  
      entraineurLastname:string;
-     description?: string;
+     
      entraineur: UserResult;
 }

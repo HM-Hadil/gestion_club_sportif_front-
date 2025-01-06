@@ -2,22 +2,20 @@
   @for (activite of activites; track $index) {
     <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:scale-105">
       <!-- En-tête de l'activité -->
-      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-3">
-        <h3 class="text-xl font-semibold text-white mb-2">{{ activite.nom }}</h3>
-        <div class="flex items-center space-x-2 text-blue-100 text-sm">
-          <p>{{ activite.entraineurFirstname }} {{ activite.entraineurLastname }}</p>
-        </div>
-      </div>
+     
 
       <!-- Contenu des séances -->
       <div class="p-4">
         <div class="space-y-4">
+      
           @for (seance of activite.seances; track $index) {
             <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
               <!-- Info séance -->
               <div class="flex justify-between items-start mb-3">
                 <div>
-                  <h4 class="font-semibold text-gray-800 text-sm">Séance {{ seance.id }}</h4>
+                  <p style="font-weight: bold;">Entreneur : {{ activite.entraineurFirstname }} {{ activite.entraineurLastname }}</p>
+
+                  <h4 class="font-semibold text-gray-800 text-sm">Séance {{ activite.nom }}</h4>
                   <div class="space-y-1 mt-1 text-xs text-gray-600">
                     <p>{{ seance.dateDebut | date:'short' }} - {{ seance.dateFin | date:'short' }}</p>
                     <p>{{ seance.prix }}€</p>
@@ -48,5 +46,8 @@
         </div>
       </div>
     </div>
+    
+   
   }
+
 </div>
