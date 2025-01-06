@@ -62,6 +62,10 @@ export class AuthService {
     const url = `http://localhost:9092/api/users/user/email/${encodeURIComponent(email)}`;
     return this.http.get<UserResult>(url);
   }
+  getUserById(id: string): Observable<UserResult> {
+    const url = `http://localhost:9092/api/users/user/id/${id}`;
+    return this.http.get<UserResult>(url);
+  }
 
  
 }

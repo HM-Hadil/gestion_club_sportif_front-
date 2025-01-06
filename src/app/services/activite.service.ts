@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -52,31 +52,51 @@ export class ActiviteService {
     );
   }
   
-
   updateActivite(id: number, activite: any): Observable<Activite> {
     return this.http.put<Activite>(`${this.apiUrl}/${id}`, activite);
   }
 
-  // Mettre à jour les séances d'une activité
+  // Corriger la méthode pour ajouter des séances
   updateActiviteSeances(
     activiteId: number, 
     seances: Seance[], 
     salleId: number
   ): Observable<Activite> {
-    return this.http.put<Activite>(
-      `${this.apiUrl}/${activiteId}/seances`, 
-      seances,
-      { params: { salleId: salleId.toString() } }
+    const url = `${this.apiUrl}/${activiteId}/seances`;
+    return this.http.put<Activite>(url, seances, {
+      params: { salleId: salleId.toString() }
+    }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Erreur lors de la mise à jour des séances:', error);
+        return throwError(() => error);
+      })
     );
   }
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Erreur inconnue';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Erreur client : ${error.error.message}`;
+    } else {
+      errorMessage = `Erreur serveur : ${error.message}`;
+    }
+    return throwError(() => new Error(errorMessage));
+  }
+  
 
   // Supprimer une activité
   deleteActivite(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // Supprimer une séance
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('user'); // ou récupérez le token de votre service d'auth
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
   deleteSeance(activiteId: number, seanceId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${activiteId}/seances/${seanceId}`);
+    return this.http.delete<void>(
+      `${this.apiUrl}/${activiteId}/seances/${seanceId}`,
+      
+    );
   }
 }

@@ -1,1 +1,113 @@
-<p>reservation-list works!</p>
+<div class="p-4">
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold">Liste des Inscriptions</h2>
+    <p class="text-gray-600">Séance #{{seanceId}} - {{nombreInscrits}} inscription(s)</p>
+  </div>
+
+  <!-- Loading spinner -->
+  @if (loading) {
+    <div class="flex justify-center items-center h-32">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+    </div>
+  }
+
+  <!-- Error message -->
+  @if (error) {
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+      <p>{{error}}</p>
+    </div>
+  }
+
+  <!-- Inscriptions table -->
+  @if (!loading && !error && inscriptions.length > 0) {
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Joueur</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date d'inscription</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Téléphone</th>
+              <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Présence</th>
+              <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            @for (inscription of inscriptions; track inscription.id) {
+              @if (getUserInfo(inscription.joueurId); as user) {
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="text-sm font-medium text-gray-900">
+                        {{user.firstname}} {{user.lastname}}
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{inscription.dateInscription | date:'dd/MM/yyyy HH:mm'}}</div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{user.email}}</div>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                    
+                  </td>
+               
+                  <td class="px-6 py-4 whitespace-nowrap text-center">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                          [ngClass]="inscription.presenceConfirmee ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'">
+                      {{inscription.presenceConfirmee ? 'Présent' : 'Non confirmé'}}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                          [ngClass]="getStatusClass(inscription.statut)">
+                      {{inscription.statut}}
+                    </span>
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-gray-900">Total Inscriptions</h3>
+        <p class="mt-2 text-3xl font-bold text-blue-600">{{nombreInscrits}}</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-gray-900">Confirmées</h3>
+        <p class="mt-2 text-3xl font-bold text-green-600">{{nombreConfirmes}}</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-gray-900">En Attente</h3>
+        <p class="mt-2 text-3xl font-bold text-yellow-600">{{nombreEnAttente}}</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-gray-900">Annulées</h3>
+        <p class="mt-2 text-3xl font-bold text-red-600">{{nombreAnnules}}</p>
+      </div>
+    </div>
+  }
+
+  <!-- Empty state -->
+  @if (!loading && !error && inscriptions.length === 0) {
+    <div class="text-center py-12 bg-white rounded-lg shadow">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">Aucune inscription</h3>
+      <p class="mt-1 text-sm text-gray-500">Il n'y a pas encore d'inscriptions pour cette séance.</p>
+    </div>
+  }
+
+  <!-- Back button -->
+
+</div>

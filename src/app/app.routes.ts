@@ -35,7 +35,10 @@ export const routes: Routes = [
       {path:'list-salle',component:ListSalleComponent}
     ]
   },
-
+  { 
+        path: 'inscriptions/:seanceId', 
+        component: ReservationListComponent
+      },
 
   {
     path: 'trainer-dashboard',
@@ -44,6 +47,7 @@ export const routes: Routes = [
       { path: 'add-activity', component: AddActivityComponent },
       { path: 'activity-list', component: ActivityListComponent },
       { path: 'registration-list', component: ReservationListComponent },
+    
       { path: '', redirectTo: 'activity-list', pathMatch: 'full' }  // Default route
     ]
   },

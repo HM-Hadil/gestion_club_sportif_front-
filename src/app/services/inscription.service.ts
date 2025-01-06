@@ -23,4 +23,8 @@ export class InscriptionService {
   annulerInscription(inscriptionId: number): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${inscriptionId}/annuler`, {});
   }
+  
+  getInscriptionsBySeance(seanceId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/seance/${seanceId}`);
+  }
 }

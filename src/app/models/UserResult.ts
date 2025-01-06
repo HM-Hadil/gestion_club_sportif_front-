@@ -6,6 +6,8 @@ export class   UserResult{
     public email: string,
     public password: string,
     public phone: string,
+    phoneNumber: string,
+
     public role: string
   ) {}
 }
